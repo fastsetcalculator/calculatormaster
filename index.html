@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CalculatorMaster - Free Online Calculators</title>
-<meta name="description" content="Free online Percentage and Age Calculator. Fast, simple and accurate.">
+<meta name="description" content="Free online Basic, Percentage, Age, EMI and GST Calculators. Fast, simple and accurate.">
 
 <style>
 *{
@@ -155,6 +155,10 @@ button{
   cursor:pointer;
 }
 
+button:hover{
+  background:#1d4ed8;
+}
+
 .result{
   margin-top:20px;
   padding:18px;
@@ -185,6 +189,7 @@ footer{
 }
 
 @media(max-width:700px){
+
   nav{
     display:none;
   }
@@ -192,6 +197,7 @@ footer{
   .hero h1{
     font-size:34px;
   }
+
 }
 </style>
 </head>
@@ -199,16 +205,23 @@ footer{
 <body>
 
 <header>
-  <div class="logo">Calculator<span>Master</span></div>
+
+  <div class="logo">
+    Calculator<span>Master</span>
+  </div>
 
   <nav>
     <a href="#home">Home</a>
     <a href="#calculators">Calculators</a>
   </nav>
+
 </header>
 
+
 <section class="hero" id="home">
+
   <h1>Free Online Calculators</h1>
+
   <p>Fast, Simple & Accurate</p>
 
   <input
@@ -216,7 +229,9 @@ footer{
     id="search"
     placeholder="Search calculator..."
     onkeyup="searchCalculator()">
+
 </section>
+
 
 <section class="container" id="calculators">
 
@@ -224,35 +239,143 @@ footer{
 
   <div class="grid">
 
-    <div class="card" onclick="document.getElementById('percentage').scrollIntoView()">
-      <div class="icon">📊</div>
-      <h3>Percentage Calculator</h3>
-      <p>Calculate percentage quickly and easily.</p>
+    <div class="card"
+    onclick="document.getElementById('basic').scrollIntoView()">
+
+      <div class="icon">🧮</div>
+
+      <h3>Basic Calculator</h3>
+
+      <p>Perform basic mathematical calculations quickly.</p>
+
     </div>
 
-    <div class="card" onclick="document.getElementById('age').scrollIntoView()">
+
+    <div class="card"
+    onclick="document.getElementById('percentage').scrollIntoView()">
+
+      <div class="icon">📊</div>
+
+      <h3>Percentage Calculator</h3>
+
+      <p>Calculate percentage quickly and easily.</p>
+
+    </div>
+
+
+    <div class="card"
+    onclick="document.getElementById('age').scrollIntoView()">
+
       <div class="icon">🎂</div>
+
       <h3>Age Calculator</h3>
+
       <p>Calculate your exact age from your date of birth.</p>
+
+    </div>
+
+
+    <div class="card"
+    onclick="document.getElementById('emi').scrollIntoView()">
+
+      <div class="icon">💰</div>
+
+      <h3>EMI Calculator</h3>
+
+      <p>Calculate monthly loan EMI easily.</p>
+
+    </div>
+
+
+    <div class="card"
+    onclick="document.getElementById('gst').scrollIntoView()">
+
+      <div class="icon">🧾</div>
+
+      <h3>GST Calculator</h3>
+
+      <p>Calculate GST amount and total price.</p>
+
     </div>
 
   </div>
+
 </section>
 
 
-<!-- Percentage Calculator -->
+<!-- BASIC CALCULATOR -->
+
+<section class="calculator" id="basic">
+
+  <h2>Basic Calculator</h2>
+
+  <label>First Number</label>
+
+  <input
+    type="number"
+    id="num1"
+    placeholder="Enter first number">
+
+
+  <label>Second Number</label>
+
+  <input
+    type="number"
+    id="num2"
+    placeholder="Enter second number">
+
+
+  <label>Operation</label>
+
+  <select id="operation"
+  style="width:100%;padding:14px;margin:8px 0 15px;border:1px solid #d0d5dd;border-radius:9px;font-size:16px;">
+
+    <option value="add">Addition (+)</option>
+    <option value="subtract">Subtraction (-)</option>
+    <option value="multiply">Multiplication (×)</option>
+    <option value="divide">Division (÷)</option>
+
+  </select>
+
+
+  <button onclick="calculateBasic()">
+    Calculate
+  </button>
+
+
+  <div class="result" id="basicResult">
+    Result will appear here
+  </div>
+
+</section>
+
+
+<!-- PERCENTAGE CALCULATOR -->
 
 <section class="calculator" id="percentage">
 
   <h2>Percentage Calculator</h2>
 
   <label>Obtained Marks</label>
-  <input type="number" id="obtained" placeholder="Enter obtained marks">
+
+  <input
+    type="number"
+    id="obtained"
+    placeholder="Enter obtained marks">
+
 
   <label>Total Marks</label>
-  <input type="number" id="total" placeholder="Enter total marks">
 
-  <button onclick="calculatePercentage()">Calculate Percentage</button>
+  <input
+    type="number"
+    id="total"
+    placeholder="Enter total marks">
+
+
+  <button onclick="calculatePercentage()">
+    Calculate Percentage
+  </button>
+
 
   <div class="result" id="percentageResult">
     Result will appear here
@@ -261,18 +384,101 @@ footer{
 </section>
 
 
-<!-- Age Calculator -->
+<!-- AGE CALCULATOR -->
 
 <section class="calculator" id="age">
 
   <h2>Age Calculator</h2>
 
   <label>Date of Birth</label>
-  <input type="date" id="dob">
 
-  <button onclick="calculateAge()">Calculate Age</button>
+  <input
+    type="date"
+    id="dob">
+
+
+  <button onclick="calculateAge()">
+    Calculate Age
+  </button>
+
 
   <div class="result" id="ageResult">
+    Result will appear here
+  </div>
+
+</section>
+
+
+<!-- EMI CALCULATOR -->
+
+<section class="calculator" id="emi">
+
+  <h2>EMI Calculator</h2>
+
+  <label>Loan Amount (₹)</label>
+
+  <input
+    type="number"
+    id="loanAmount"
+    placeholder="Enter loan amount">
+
+
+  <label>Annual Interest Rate (%)</label>
+
+  <input
+    type="number"
+    id="interestRate"
+    placeholder="Enter interest rate">
+
+
+  <label>Loan Tenure (Years)</label>
+
+  <input
+    type="number"
+    id="loanYears"
+    placeholder="Enter years">
+
+
+  <button onclick="calculateEMI()">
+    Calculate EMI
+  </button>
+
+
+  <div class="result" id="emiResult">
+    Result will appear here
+  </div>
+
+</section>
+
+
+<!-- GST CALCULATOR -->
+
+<section class="calculator" id="gst">
+
+  <h2>GST Calculator</h2>
+
+  <label>Amount (₹)</label>
+
+  <input
+    type="number"
+    id="gstAmount"
+    placeholder="Enter amount">
+
+
+  <label>GST Rate (%)</label>
+
+  <input
+    type="number"
+    id="gstRate"
+    placeholder="Example: 18">
+
+
+  <button onclick="calculateGST()">
+    Calculate GST
+  </button>
+
+
+  <div class="result" id="gstResult">
     Result will appear here
   </div>
 
@@ -285,8 +491,9 @@ footer{
 
   <p>
     CalculatorMaster provides free online calculators that are
-    simple, fast and easy to use. Calculate percentages and age
-    accurately from your browser.
+    simple, fast and easy to use. Calculate percentages, age,
+    EMI, GST and basic mathematical calculations directly from
+    your browser.
   </p>
 
   <br>
@@ -297,99 +504,392 @@ footer{
     Percentage = (Obtained Marks ÷ Total Marks) × 100
   </p>
 
+  <br>
+
+  <h2>How is EMI Calculated?</h2>
+
+  <p>
+    EMI is calculated using the loan amount, interest rate and
+    loan tenure.
+  </p>
+
+  <br>
+
+  <h2>How to Calculate GST?</h2>
+
+  <p>
+    GST Amount = Amount × GST Rate ÷ 100
+  </p>
+
 </section>
 
 
 <footer>
-  <p>© 2026 CalculatorMaster. All Rights Reserved.</p>
+
+  <p>
+    © 2026 CalculatorMaster. All Rights Reserved.
+  </p>
+
 </footer>
 
 
 <script>
 
-function calculatePercentage(){
 
-  let obtained = Number(document.getElementById("obtained").value);
-  let total = Number(document.getElementById("total").value);
+/* BASIC CALCULATOR */
 
-  if(obtained === "" || total === "" || total <= 0){
-    document.getElementById("percentageResult").innerText =
-    "Please enter valid marks.";
+function calculateBasic(){
+
+  let num1 =
+  Number(document.getElementById("num1").value);
+
+  let num2 =
+  Number(document.getElementById("num2").value);
+
+  let operation =
+  document.getElementById("operation").value;
+
+  let result;
+
+
+  if(
+    document.getElementById("num1").value === "" ||
+    document.getElementById("num2").value === ""
+  ){
+
+    document.getElementById("basicResult").innerText =
+    "Please enter both numbers.";
+
     return;
+
   }
 
-  let percentage = (obtained / total) * 100;
+
+  if(operation === "add"){
+
+    result = num1 + num2;
+
+  }
+
+  else if(operation === "subtract"){
+
+    result = num1 - num2;
+
+  }
+
+  else if(operation === "multiply"){
+
+    result = num1 * num2;
+
+  }
+
+  else if(operation === "divide"){
+
+    if(num2 === 0){
+
+      document.getElementById("basicResult").innerText =
+      "Cannot divide by zero.";
+
+      return;
+
+    }
+
+    result = num1 / num2;
+
+  }
+
+
+  document.getElementById("basicResult").innerText =
+  "Result: " + result;
+
+}
+
+
+/* PERCENTAGE */
+
+function calculatePercentage(){
+
+  let obtained =
+  Number(document.getElementById("obtained").value);
+
+  let total =
+  Number(document.getElementById("total").value);
+
+
+  if(
+    document.getElementById("obtained").value === "" ||
+    document.getElementById("total").value === "" ||
+    total <= 0
+  ){
+
+    document.getElementById("percentageResult").innerText =
+    "Please enter valid marks.";
+
+    return;
+
+  }
+
+
+  if(obtained < 0 || obtained > total){
+
+    document.getElementById("percentageResult").innerText =
+    "Obtained marks cannot be greater than total marks.";
+
+    return;
+
+  }
+
+
+  let percentage =
+  (obtained / total) * 100;
+
 
   document.getElementById("percentageResult").innerText =
   "Your Percentage: " + percentage.toFixed(2) + "%";
+
 }
 
+
+/* AGE */
 
 function calculateAge(){
 
-  let dobInput = document.getElementById("dob").value;
+  let dobInput =
+  document.getElementById("dob").value;
+
 
   if(!dobInput){
+
     document.getElementById("ageResult").innerText =
     "Please enter your date of birth.";
+
     return;
+
   }
 
-  let dob = new Date(dobInput + "T00:00:00");
-  let today = new Date();
+
+  let dob =
+  new Date(dobInput + "T00:00:00");
+
+  let today =
+  new Date();
+
 
   if(dob > today){
+
     document.getElementById("ageResult").innerText =
     "Please enter a valid date.";
+
     return;
+
   }
 
-  let years = today.getFullYear() - dob.getFullYear();
-  let months = today.getMonth() - dob.getMonth();
-  let days = today.getDate() - dob.getDate();
+
+  let years =
+  today.getFullYear() - dob.getFullYear();
+
+  let months =
+  today.getMonth() - dob.getMonth();
+
+  let days =
+  today.getDate() - dob.getDate();
+
 
   if(days < 0){
+
     months--;
 
     let previousMonth =
-    new Date(today.getFullYear(), today.getMonth(), 0);
+    new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      0
+    );
 
     days += previousMonth.getDate();
+
   }
+
 
   if(months < 0){
+
     years--;
+
     months += 12;
+
   }
 
+
   let totalDays =
-  Math.floor((today - dob) / (1000 * 60 * 60 * 24));
+  Math.floor(
+    (today - dob) /
+    (1000 * 60 * 60 * 24)
+  );
+
 
   document.getElementById("ageResult").innerHTML =
-  "Your Age: " + years + " Years " +
+  "Your Age: " +
+  years + " Years " +
   months + " Months " +
   days + " Days<br><br>" +
-  "Total Days: " + totalDays + " Days";
+  "Total Days: " +
+  totalDays + " Days";
+
 }
 
+
+/* EMI */
+
+function calculateEMI(){
+
+  let principal =
+  Number(document.getElementById("loanAmount").value);
+
+  let annualRate =
+  Number(document.getElementById("interestRate").value);
+
+  let years =
+  Number(document.getElementById("loanYears").value);
+
+
+  if(
+    principal <= 0 ||
+    annualRate < 0 ||
+    years <= 0
+  ){
+
+    document.getElementById("emiResult").innerText =
+    "Please enter valid loan details.";
+
+    return;
+
+  }
+
+
+  let monthlyRate =
+  annualRate / 12 / 100;
+
+  let months =
+  years * 12;
+
+  let emi;
+
+
+  if(monthlyRate === 0){
+
+    emi =
+    principal / months;
+
+  }
+
+  else{
+
+    emi =
+    principal *
+    monthlyRate *
+    Math.pow(
+      1 + monthlyRate,
+      months
+    ) /
+    (
+      Math.pow(
+        1 + monthlyRate,
+        months
+      ) - 1
+    );
+
+  }
+
+
+  let totalPayment =
+  emi * months;
+
+  let totalInterest =
+  totalPayment - principal;
+
+
+  document.getElementById("emiResult").innerHTML =
+  "Monthly EMI: ₹" +
+  emi.toFixed(2) +
+  "<br><br>" +
+  "Total Interest: ₹" +
+  totalInterest.toFixed(2) +
+  "<br><br>" +
+  "Total Payment: ₹" +
+  totalPayment.toFixed(2);
+
+}
+
+
+/* GST */
+
+function calculateGST(){
+
+  let amount =
+  Number(document.getElementById("gstAmount").value);
+
+  let rate =
+  Number(document.getElementById("gstRate").value);
+
+
+  if(
+    amount <= 0 ||
+    rate < 0
+  ){
+
+    document.getElementById("gstResult").innerText =
+    "Please enter valid amount and GST rate.";
+
+    return;
+
+  }
+
+
+  let gst =
+  amount * rate / 100;
+
+  let total =
+  amount + gst;
+
+
+  document.getElementById("gstResult").innerHTML =
+  "GST Amount: ₹" +
+  gst.toFixed(2) +
+  "<br><br>" +
+  "Total Amount: ₹" +
+  total.toFixed(2);
+
+}
+
+
+/* SEARCH */
 
 function searchCalculator(){
 
   let search =
   document.getElementById("search").value.toLowerCase();
 
+
   let cards =
   document.querySelectorAll(".card");
+
 
   cards.forEach(function(card){
 
     let text =
     card.innerText.toLowerCase();
 
+
     if(text.includes(search)){
+
       card.style.display = "block";
-    }else{
+
+    }
+
+    else{
+
       card.style.display = "none";
+
     }
 
   });
@@ -399,4 +899,4 @@ function searchCalculator(){
 </script>
 
 </body>
-</html>
+  </html>
