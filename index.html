@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CalculatorMaster - Free Online Calculators</title>
-
-<meta name="description" content="Free online calculators including percentage, age, EMI, GST, discount and more.">
+<meta name="description" content="Free online Percentage and Age Calculator. Fast, simple and accurate.">
 
 <style>
 *{
@@ -94,6 +93,12 @@ nav a{
   padding:25px;
   border-radius:16px;
   box-shadow:0 5px 20px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
 }
 
 .card h3{
@@ -124,6 +129,12 @@ nav a{
   margin-bottom:25px;
 }
 
+label{
+  display:block;
+  margin-top:10px;
+  font-weight:bold;
+}
+
 input{
   width:100%;
   padding:14px;
@@ -141,6 +152,7 @@ button{
   border:0;
   border-radius:9px;
   font-size:16px;
+  cursor:pointer;
 }
 
 .result{
@@ -155,6 +167,9 @@ button{
 }
 
 .info{
+  width:90%;
+  max-width:1000px;
+  margin:40px auto;
   background:white;
   padding:30px;
   border-radius:15px;
@@ -167,12 +182,6 @@ footer{
   text-align:center;
   padding:35px 20px;
   margin-top:60px;
-}
-
-footer a{
-  color:white;
-  margin:0 8px;
-  text-decoration:none;
 }
 
 @media(max-width:700px){
@@ -195,7 +204,6 @@ footer a{
   <nav>
     <a href="#home">Home</a>
     <a href="#calculators">Calculators</a>
-    <a href="#about">About</a>
   </nav>
 </header>
 
@@ -216,48 +224,179 @@ footer a{
 
   <div class="grid">
 
-    <div class="card">
+    <div class="card" onclick="document.getElementById('percentage').scrollIntoView()">
       <div class="icon">📊</div>
       <h3>Percentage Calculator</h3>
       <p>Calculate percentage quickly and easily.</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="document.getElementById('age').scrollIntoView()">
       <div class="icon">🎂</div>
       <h3>Age Calculator</h3>
-      <p>Calculate your age from your date of birth.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🏦</div>
-      <h3>EMI Calculator</h3>
-      <p>Calculate monthly loan EMI and interest.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🧾</div>
-      <h3>GST Calculator</h3>
-      <p>Calculate GST and final price.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🏷️</div>
-      <h3>Discount Calculator</h3>
-      <p>Calculate discount and final price.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎓</div>
-      <h3>CGPA Calculator</h3>
-      <p>Calculate your CGPA easily.</p>
+      <p>Calculate your exact age from your date of birth.</p>
     </div>
 
   </div>
 </section>
 
-<section class="calculator">
+
+<!-- Percentage Calculator -->
+
+<section class="calculator" id="percentage">
 
   <h2>Percentage Calculator</h2>
 
   <label>Obtained Marks</label>
-  <input type="
+  <input type="number" id="obtained" placeholder="Enter obtained marks">
+
+  <label>Total Marks</label>
+  <input type="number" id="total" placeholder="Enter total marks">
+
+  <button onclick="calculatePercentage()">Calculate Percentage</button>
+
+  <div class="result" id="percentageResult">
+    Result will appear here
+  </div>
+
+</section>
+
+
+<!-- Age Calculator -->
+
+<section class="calculator" id="age">
+
+  <h2>Age Calculator</h2>
+
+  <label>Date of Birth</label>
+  <input type="date" id="dob">
+
+  <button onclick="calculateAge()">Calculate Age</button>
+
+  <div class="result" id="ageResult">
+    Result will appear here
+  </div>
+
+</section>
+
+
+<section class="info">
+
+  <h2>About CalculatorMaster</h2>
+
+  <p>
+    CalculatorMaster provides free online calculators that are
+    simple, fast and easy to use. Calculate percentages and age
+    accurately from your browser.
+  </p>
+
+  <br>
+
+  <h2>How to Calculate Percentage?</h2>
+
+  <p>
+    Percentage = (Obtained Marks ÷ Total Marks) × 100
+  </p>
+
+</section>
+
+
+<footer>
+  <p>© 2026 CalculatorMaster. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+
+function calculatePercentage(){
+
+  let obtained = Number(document.getElementById("obtained").value);
+  let total = Number(document.getElementById("total").value);
+
+  if(obtained === "" || total === "" || total <= 0){
+    document.getElementById("percentageResult").innerText =
+    "Please enter valid marks.";
+    return;
+  }
+
+  let percentage = (obtained / total) * 100;
+
+  document.getElementById("percentageResult").innerText =
+  "Your Percentage: " + percentage.toFixed(2) + "%";
+}
+
+
+function calculateAge(){
+
+  let dobInput = document.getElementById("dob").value;
+
+  if(!dobInput){
+    document.getElementById("ageResult").innerText =
+    "Please enter your date of birth.";
+    return;
+  }
+
+  let dob = new Date(dobInput + "T00:00:00");
+  let today = new Date();
+
+  if(dob > today){
+    document.getElementById("ageResult").innerText =
+    "Please enter a valid date.";
+    return;
+  }
+
+  let years = today.getFullYear() - dob.getFullYear();
+  let months = today.getMonth() - dob.getMonth();
+  let days = today.getDate() - dob.getDate();
+
+  if(days < 0){
+    months--;
+
+    let previousMonth =
+    new Date(today.getFullYear(), today.getMonth(), 0);
+
+    days += previousMonth.getDate();
+  }
+
+  if(months < 0){
+    years--;
+    months += 12;
+  }
+
+  let totalDays =
+  Math.floor((today - dob) / (1000 * 60 * 60 * 24));
+
+  document.getElementById("ageResult").innerHTML =
+  "Your Age: " + years + " Years " +
+  months + " Months " +
+  days + " Days<br><br>" +
+  "Total Days: " + totalDays + " Days";
+}
+
+
+function searchCalculator(){
+
+  let search =
+  document.getElementById("search").value.toLowerCase();
+
+  let cards =
+  document.querySelectorAll(".card");
+
+  cards.forEach(function(card){
+
+    let text =
+    card.innerText.toLowerCase();
+
+    if(text.includes(search)){
+      card.style.display = "block";
+    }else{
+      card.style.display = "none";
+    }
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
