@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalculatorMaster - Free Online Calculators</title>
+
+<meta name="description" content="Free online calculators including percentage, age, EMI, GST, discount and more.">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#172033;
+}
+
+header{
+  background:#111827;
+  color:white;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#60a5fa;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:22px;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:18px;
+  margin-bottom:28px;
+}
+
+.search{
+  width:90%;
+  max-width:600px;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:45px auto;
+}
+
+.title{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:30px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h3{
+  margin:12px 0;
+}
+
+.card p{
+  color:#667085;
+  line-height:1.5;
+}
+
+.icon{
+  font-size:35px;
+}
+
+.calculator{
+  width:90%;
+  max-width:600px;
+  margin:40px auto;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 5px 25px rgba(0,0,0,.1);
+}
+
+.calculator h2{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:8px 0 15px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  background:#2563eb;
+  color:white;
+  border:0;
+  border-radius:9px;
+  font-size:16px;
+}
+
+.result{
+  margin-top:20px;
+  padding:18px;
+  background:#eff6ff;
+  border-radius:10px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  color:#1d4ed8;
+}
+
+.info{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  line-height:1.7;
+}
+
+footer{
+  background:#111827;
+  color:#cbd5e1;
+  text-align:center;
+  padding:35px 20px;
+  margin-top:60px;
+}
+
+footer a{
+  color:white;
+  margin:0 8px;
+  text-decoration:none;
+}
+
+@media(max-width:700px){
+  nav{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Calculator<span>Master</span></div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#calculators">Calculators</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Free Online Calculators</h1>
+  <p>Fast, Simple & Accurate</p>
+
+  <input
+    class="search"
+    id="search"
+    placeholder="Search calculator..."
+    onkeyup="searchCalculator()">
+</section>
+
+<section class="container" id="calculators">
+
+  <h2 class="title">Popular Calculators</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate percentage quickly and easily.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎂</div>
+      <h3>Age Calculator</h3>
+      <p>Calculate your age from your date of birth.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏦</div>
+      <h3>EMI Calculator</h3>
+      <p>Calculate monthly loan EMI and interest.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧾</div>
+      <h3>GST Calculator</h3>
+      <p>Calculate GST and final price.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏷️</div>
+      <h3>Discount Calculator</h3>
+      <p>Calculate discount and final price.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>CGPA Calculator</h3>
+      <p>Calculate your CGPA easily.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="calculator">
+
+  <h2>Percentage Calculator</h2>
+
+  <label>Obtained Marks</label>
+  <input type="
